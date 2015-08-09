@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% for post in posts %}
+    <hr>
+    <div class="post-preview">
+      <a href="{{ post.get_absolute_url }}">
+        <h2 class="post-title">{{ post.title }}</h2>
+      </a>
+      <article>
+        <p>{{ post.content|safe }}</p>
+      </article>
+      <p class="post-meta">{{ post.datestamp|date:"d F Y H:i" }}</p>
+    </div>
+  {% empty %}
+    <p>Нет постов</p>
+  {% endfor %}
+  {% if is_paginated %}
+    {% if page_obj.has_next  %}
+      <a href="?page={{ page_obj.next_page_number }}">
+        <button id="next" class="btn btn-default btn-sm">
+          Older Posts <span class="glyphicon glyphicon-chevron-right"></span>
+        </button>
+      </a>
+    {% endif %}
+    {% if page_obj.has_previous %}
+      <a href="?page={{ page_obj.previous_page_number }}">
+        <button id="previous" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-chevron-left"></span> Previous Posts
+        </button>
+      </a>
+    {% endif %}
+  {% endif %}
+{% endblock %}

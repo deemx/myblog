@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+  <hr>
+  <div class="post-preview">
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.content|safe }}</p>
+    <p class="post-meta">{{ post.datestamp|date:"d F Y H:i" }}</p>
+  </div>
+{% endblock %}
