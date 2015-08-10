@@ -2,6 +2,7 @@
 import os
 import sys
 import django
+from app import settings
 
 
 if __name__ == '__main__':
