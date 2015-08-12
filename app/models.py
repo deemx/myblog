@@ -12,7 +12,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     datestamp = models.DateTimeField()
-    posts = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag)
 
     class Meta:
         ordering = ['-id']
