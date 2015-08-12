@@ -385,3 +385,21 @@ article + [data-readmore-toggle], selector[data-readmore] {
     font-size: 14px;
     font-weight: 800;
 }
+.post-tags {
+    list-style-type: none;
+    display: inline;
+    padding-left: 7px;
+}
+.post-tags a {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 13px;
+}
+li.post-tags a:hover {
+    color: #0085a1;
+    text-decoration: none;
+}
+ul .post-tags {
+    float: right;
+}
