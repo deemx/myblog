@@ -1,9 +1,8 @@
 import os.path as osp
-import sys
 from django.conf import settings
 
 
-BASE_DIR = osp.split( osp.dirname(__file__) )[0]
+BASE_DIR = osp.split(osp.dirname(__file__))[0]
 
 settings.configure(
     DEBUG=True,
@@ -47,6 +46,7 @@ settings.configure(
         'django.contrib.staticfiles',
         'django.contrib.admin',
 
+        'captcha',
         'tinymce',
         'app',
     ),
