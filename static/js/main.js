@@ -35,5 +35,5 @@ jQuery(document).ready(function($) {
         moreLink: '<a href="#">Read More</a>',
 	    lessLink: '<a href="#">Close</a>'
     });
-
+    
 });
