@@ -1,8 +1,7 @@
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormMixin
-from django.shortcuts import render_to_response
 
-from .models import Post, Tag
+from .models import Post, Tag, Comments
 from .forms import CommentModelForm
 
 
@@ -26,10 +25,26 @@ class PostsListView(ListView):
 class PostDetailView(FormMixin, DetailView):
     model = Post
     form_class = CommentModelForm
+    success_url = './'
 
     def get_context_data(self, **kwargs):
         context = super(PostDetailView, self).get_context_data(**kwargs)
         context['alltags'] = Tag.objects.all()
-        form_class = self.get_form_class()
-        context['form'] = self.get_form(form_class)
+        context['comments'] = Comments.objects.filter(
+            post_id=self.get_object().id)
+        context['form'] = self.get_form(self.form_class)
         return context
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return super(PostDetailView, self).get(
+                request, *args, **kwargs)
+
+    def form_valid(self, form):
+        form_save = form.save(commit=False)
+        form_save.post_id = self.get_object().id
+        form_save.save()
+        return super(PostDetailView, self).form_valid(form)

@@ -10,8 +10,13 @@
       {% endfor %} 
     </ul>
     <p class="post-meta">{{ post.datestamp|date:"d F Y H:i" }}</p>
-    <form class="post-preview" method="post">{% csrf_token %}
+    {% for comment in comments %}
+      <p><strong>{{ comment.nickname }}</strong></p>
+      <p>{{ comment.comment }}</p>
+    {% endfor %}
+    <form class="post-preview" method="post" action="">{% csrf_token %}
       {{ form.as_ul }}
+      <input type="submit" value="SEND" class="btn btn-default btn-sm">
     </form>
   </div>
 {% endblock %}
