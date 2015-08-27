@@ -403,3 +403,31 @@ li.post-tags a:hover {
 ul .post-tags {
     float: right;
 }
+
+p.comment-nick {
+    margin: 2em 2em 0;
+}
+
+p.comment-text {
+    margin: 0 0 1em;
+}
+
+form.comment-add {
+    margin: 2em 0em 2em;
+}
+
+.comment-add li {
+    margin: 1em 0;
+}
+
+.comment-add ul {
+    list-style-type: none;
+}
+
+ul.errorlist {
+    color: red;
+}
+
+.comment-add li label {
+    display: block;
+}

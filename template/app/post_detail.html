@@ -11,11 +11,13 @@
     </ul>
     <p class="post-meta">{{ post.datestamp|date:"d F Y H:i" }}</p>
     {% for comment in comments %}
-      <p><strong>{{ comment.nickname }}</strong></p>
-      <p>{{ comment.comment }}</p>
+      <p class="comment-nick"><strong>{{ comment.nickname }}</strong></p>
+      <p class="comment-text">{{ comment.comment }}</p>
     {% endfor %}
-    <form class="post-preview" method="post" action="">{% csrf_token %}
-      {{ form.as_ul }}
+    <form class="comment-add" method="post" action="">{% csrf_token %}
+      <ul>
+	{{ form.as_ul }}
+      </ul>
       <input type="submit" value="SEND" class="btn btn-default btn-sm">
     </form>
   </div>
