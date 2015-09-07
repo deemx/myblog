@@ -10,4 +10,5 @@ urlpatterns = patterns('',
                        url(r'^$', PostsListView.as_view()),
                        url(r'^(?P<pk>\d+)/$', PostDetailView.as_view()),
                        url(r'^admin/', include(admin.site.urls)),
+                       url(r'^ckeditor/', include('ckeditor.urls')),
                        url(r'^captcha/', include('captcha.urls')),)

@@ -20,6 +20,23 @@ settings.configure(
     ),
     TEMPLATE_DIRS=(
         osp.join(BASE_DIR, 'template'), ),
+    MEDIA_URL = '/media/',
+    CKEDITOR_UPLOAD_PATH = 'uploads/',
+    CKEDITOR_CONFIGS = {
+        'default': {
+            'skin': 'moono',
+            'toolbar': 'Custom',
+            'language':'ru',
+            'toolbar_Custom': [
+                ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+                ['Link', 'Unlink', 'Anchor'],
+                ['Image', 'Table', 'HorizontalRule', 'CodeSnippet'],
+                ['TextColor', 'BGColor'],
+                ['Smiley', 'SpecialChar'], ['Source'],
+            ],
+            'extraPlugins': 'codesnippet',
+        },
+    },
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -47,7 +64,7 @@ settings.configure(
         'django.contrib.admin',
 
         'captcha',
-        'tinymce',
+        'ckeditor',
         'app',
     ),
     WSGI_APPLICATION = 'app.wsgi.application',

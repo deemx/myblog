@@ -1,6 +1,7 @@
 from django.db import models
 
 from captcha.fields import CaptchaField
+from ckeditor.fields import RichTextField
 
 
 class Tag(models.Model):
@@ -12,7 +13,7 @@ class Tag(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    content = models.TextField()
+    content = RichTextField()
     datestamp = models.DateTimeField()
     tags = models.ManyToManyField(Tag)
 
@@ -30,4 +31,5 @@ class Comments(models.Model):
     nickname = models.CharField(max_length=35)
     comment = models.TextField(default='')
     captcha = CaptchaField()
+    date = models.DateTimeField(auto_now_add=True)
     post = models.ForeignKey(Post)
